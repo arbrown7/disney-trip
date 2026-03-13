@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h1>{{ trip.name }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="btn-group" appDropdown>
+            <button type="button" class="btn btn-primary dropdown-toggle">Manage Trip <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a style="cursor: pointer;" (click)="onEditTrip()">Edit Trip</a></li>
+                <li><a style="cursor: pointer;" (click)="onDeleteTrip()">Delete Trip</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{ trip.startDate }} - {{ trip.endDate }}
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-xs-12">
+        <ul class="list-group">
+            <li class="list-group-item"
+            *ngFor="let ingredient of recipe.ingredients">
+            {{ ingredient.name }} - {{ ingredient.amount }}
+            </li>
+        </ul>
+    </div>
+</div> -->

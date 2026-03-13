@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn bt-success" (click)="onNewTrip()">New Trip</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <app-trip-item 
+        *ngFor="let tripEl of trips; let i = index"
+        [trip]="tripEl"
+        [index]="i"></app-trip-item>
+    </div>
+</div>

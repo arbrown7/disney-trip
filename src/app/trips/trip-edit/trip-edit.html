@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button 
+                    type="submit" 
+                    class="btn btn-success"
+                    [disabled]="!tripForm.valid">Save</button>
+                    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input 
+                        type="text" 
+                        id="name"
+                        formControlName="name"
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <input 
+                        type="text" 
+                        id="startDate"
+                        formControlName="startDate"
+                        class="form-control">
+                        <!-- you may need to add #startDate -->
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <input
+                        type="text" 
+                        id="endDate"
+                        formControlName="endDate"
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="accommodations">Accommodations</label>
+                        <input
+                        type="text" 
+                        id="accommodations"
+                        formControlName="accommodations"
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
