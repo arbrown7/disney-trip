@@ -1,0 +1,101 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form [formGroup]="logForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button 
+                    type="submit" 
+                    class="btn btn-success"
+                    [disabled]="!logForm.valid">Save</button>
+                    <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Date</label>
+                        <input 
+                        type="text" 
+                        id="date"
+                        formControlName="date"
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="parks">Parks</label>
+                        <input 
+                        type="text" 
+                        id="parks"
+                        formControlName="parks"
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="notes">Notes</label>
+                        <textarea 
+                        id="notes"
+                        rows="6"
+                        formControlName="notes"
+                        class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="weather">Weather</label>
+                        <input
+                        type="text" 
+                        id="weather"
+                        formControlName="weather"
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="crowdLevel">Crowd Level</label>
+                        <input
+                        type="number" 
+                        min="0"
+                        max="10"
+                        id="crowdLevel"
+                        formControlName="crowdLevel"
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="rating">Rating</label>
+                        <input
+                        type="number" 
+                        min="0"
+                        max="10"
+                        id="rating"
+                        formControlName="rating"
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Add Attractions Here</p>
+                </div>
+            </div>   
+            <div class="row">
+                <div class="col-xs-12">
+                    <p>Associate Trip Here</p>
+                </div>
+            </div>                      
+        </form>
+    </div>
+</div>

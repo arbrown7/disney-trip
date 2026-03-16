@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button class="btn bt-success" (click)="onNewLog()">New Log Entry</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <app-log-item 
+        *ngFor="let logEl of logs; let i = index"
+        [log]="logEl"
+        [index]="i"></app-log-item>
+    </div>
+</div>

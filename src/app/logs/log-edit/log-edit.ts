@@ -2,22 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { Trip } from '../trip.model';
-import { TripService } from '../trip.service';
+import { LogService } from '../log.service';
 
 @Component({
-  selector: 'app-trip-edit',
+  selector: 'app-log-edit',
   standalone: false,
-  templateUrl: './trip-edit.html',
-  styleUrl: './trip-edit.css',
+  templateUrl: './log-edit.html',
+  styleUrl: './log-edit.css',
 })
-export class TripEdit implements OnInit{
+export class LogEdit implements OnInit{
   id: number;
   editMode = false;
-  tripForm: FormGroup;
+  logForm: FormGroup;
 
   constructor(private route: ActivatedRoute, 
-              private tripService: TripService,
+              private logService: LogService,
               private router: Router) {}
 
   ngOnInit() {
@@ -32,14 +31,14 @@ export class TripEdit implements OnInit{
 
   onSubmit() {
     if(this.editMode) {
-      this.tripService.updateTrip(this.id, this.tripForm.value);
+      this.logService.updateLog(this.id, this.logForm.value);
     } else {
-      this.tripService.addTrip(this.tripForm.value);
+      this.logService.addLog(this.logForm.value);
     }
   }
 
   // onAddIngredient() {
-  //   (<FormArray>this.tripForm.get('ingredients')).push(
+  //   (<FormArray>this.logForm.get('ingredients')).push(
   //     new FormGroup({
   //       'name': new FormControl(null, Validators.required),
   //       'amount': new FormControl(null, [
@@ -60,18 +59,24 @@ export class TripEdit implements OnInit{
   }
 
   private initForm() {
-    let tripName = '';
-    let tripStartDate = '';
-    let tripEndDate = '';
-    let tripAccommodations = '';
-    //let tripLogs = new FormArray([]);
+    let logDate = '';
+    let logParks = '';
+    let logNotes = '';
+    let logWeather = '';
+    let logCrowd = 0;
+    let logRating = 0;
+    //let logTrip = null;
+    //let logAttractions = new FormArray([]);
   
     if(this.editMode) {
-      const trip = this.tripService.getTrip(this.id);
-      tripName = trip.name;
-      tripStartDate = trip.startDate;
-      tripEndDate = trip.endDate;
-      tripAccommodations = trip.accommodations;
+      const log = this.logService.getLog(this.id);
+      logDate = log.date;
+      logParks = log.parks;
+      logNotes = log.notes;
+      logWeather = log.weather;
+      logCrowd = log.crowdLevel;
+      logRating = log.rating;
+      //logTrip = log.tripId;
       // if(recipe['ingredients']) {
       //   for(let ingredient of recipe.ingredients) {
       //     recipeIngredients.push(
@@ -86,17 +91,20 @@ export class TripEdit implements OnInit{
       //   }
       // }
     }
-    this.tripForm = new FormGroup({
-      'name': new FormControl(tripName, Validators.required),
-      'startDate': new FormControl(tripStartDate, Validators.required),
-      'endDate': new FormControl(tripEndDate, Validators.required),
-      'accommodations': new FormControl(tripAccommodations, Validators.required)
-      //'ingredients': recipeIngredients
+    this.logForm = new FormGroup({
+      'date': new FormControl(logDate, Validators.required),
+      'parks': new FormControl(logParks, Validators.required),
+      'notes': new FormControl(logNotes, Validators.required),
+      'weather': new FormControl(logWeather, Validators.required),
+      'crowdLevel': new FormControl(logCrowd, Validators.required),
+      'rating': new FormControl(logRating, Validators.required)
+      //'tripId': new FormControl(logTrip, Validators.required)
+      //'attractions': logAttractions
     });
   }
 
   // get controls() {
-  //   return (<FormArray>this.tripForm.get('ingredients')).controls;
+  //   return (<FormArray>this.logForm.get('ingredients')).controls;
   // }
 
 }

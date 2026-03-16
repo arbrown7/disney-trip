@@ -11,6 +11,12 @@ import { Header } from './header';
 import { AppRoutingModule } from './app-routing-module';
 import { TripStart } from './trips/trip-start/trip-start';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Logs } from './logs/logs';
+import { LogEdit } from './logs/log-edit/log-edit';
+import { LogDetail } from './logs/log-detail/log-detail';
+import { LogItem } from './logs/log-item/log-item';
+import { LogList } from './logs/log-list/log-list';
+import { LogStart } from './logs/log-start/log-start';
 
 @NgModule({
   declarations: [
@@ -21,7 +27,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     TripItem,
     TripList,
     Header,
-    TripStart
+    TripStart,
+    Logs,
+    LogEdit,
+    LogDetail,
+    LogItem,
+    LogList,
+    LogStart
   ],
   imports: [
     BrowserModule,
