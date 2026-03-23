@@ -10,19 +10,19 @@ export class Trip {
     public startDate: string;
     public endDate: string;
     public accommodations: string;
-    public children?: any[]; // change to log[]
+    public logs?: any[]; // change to log[]
 
     constructor(
         name: string,
         startDate: string,
         endDate: string,
         accommodations: string,
-        children: any[] // change to log[]
+        logs: any[] // change to log[]
     ) {
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.accommodations = accommodations;
-        this.children = children;
+        this.logs = logs;
     }
 }

@@ -17,7 +17,7 @@ export class Log {
     public crowdLevel: number;
     public rating: number;
     public tripId: number;
-    public children?: any[]; // change to attraction[]
+    public attractions?: any[]; // change to attraction[]
 
     constructor(
         date: string,
@@ -27,7 +27,7 @@ export class Log {
         crowd: number,
         rating: number,
         trip: number,
-        children: any[] // change to attraction[]
+        attractions: any[] // change to attraction[]
     ) {
         this.date = date;
         this.parks = parks;
@@ -36,6 +36,6 @@ export class Log {
         this.crowdLevel = crowd;
         this.rating = rating;
         this.tripId = trip;
-        this.children = children;
+        this.attractions = attractions;
     }
 }

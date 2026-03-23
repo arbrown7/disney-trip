@@ -1,1 +1,54 @@
-<p>log-detail works!</p>
+<div class="row">
+    <div class="col-xs-12">
+        <!-- how trip name here -->
+        <h1>{{ log.date }}</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="btn-group" appDropdown>
+            <button type="button" class="btn btn-primary dropdown-toggle">Manage Log <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><a style="cursor: pointer;" (click)="onEditLog()">Edit Log</a></li>
+                <li><a style="cursor: pointer;" (click)="onDeleteLog()">Delete Log</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{ log.parks }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{ log.weather }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{ log.crowdLevel }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{ log.rating }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        {{ log.notes }}
+    </div>
+</div>
+
+<!-- <div class="row">
+    <div class="col-xs-12">
+        <ul class="list-group">
+            <li class="list-group-item"
+            *ngFor="let ingredient of recipe.ingredients">
+            {{ ingredient.name }} - {{ ingredient.amount }}
+            </li>
+        </ul>
+    </div>
+</div> -->
