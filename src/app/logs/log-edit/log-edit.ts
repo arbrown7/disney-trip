@@ -14,6 +14,8 @@ export class LogEdit implements OnInit{
   id: number;
   editMode = false;
   logForm: FormGroup;
+  availableParks = ['Magic Kingdom', 'EPCOT', 'Hollywood Studios', 'Animal Kingdom'];
+  allAttractions: any[] = [];
 
   constructor(private route: ActivatedRoute, 
               private logService: LogService,
@@ -60,7 +62,7 @@ export class LogEdit implements OnInit{
 
   private initForm() {
     let logDate = '';
-    let logParks = '';
+    //let logParks = '';
     let logNotes = '';
     let logWeather = '';
     let logCrowd = 0;
@@ -71,7 +73,7 @@ export class LogEdit implements OnInit{
     if(this.editMode) {
       const log = this.logService.getLog(this.id);
       logDate = log.date;
-      logParks = log.parks;
+      //logParks = log.parks;
       logNotes = log.notes;
       logWeather = log.weather;
       logCrowd = log.crowdLevel;
@@ -93,7 +95,7 @@ export class LogEdit implements OnInit{
     }
     this.logForm = new FormGroup({
       'date': new FormControl(logDate, Validators.required),
-      'parks': new FormControl(logParks, Validators.required),
+      //'parks': new FormControl(logParks, Validators.required),
       'notes': new FormControl(logNotes, Validators.required),
       'weather': new FormControl(logWeather, Validators.required),
       'crowdLevel': new FormControl(logCrowd, Validators.required),

@@ -3,10 +3,7 @@
         <form [formGroup]="logForm" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="col-xs-12">
-                    <button 
-                    type="submit" 
-                    class="btn btn-success"
-                    [disabled]="!logForm.valid">Save</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!logForm.valid">Save</button>
                     <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
                 </div>
             </div>
@@ -14,23 +11,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="name">Date</label>
-                        <input 
-                        type="text" 
-                        id="date"
-                        formControlName="date"
-                        class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="form-group">
-                        <label for="parks">Parks</label>
-                        <input 
-                        type="text" 
-                        id="parks"
-                        formControlName="parks"
-                        class="form-control">
+                        <input type="text" id="date" formControlName="date" class="form-control">
                     </div>
                 </div>
             </div>
@@ -38,11 +19,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="notes">Notes</label>
-                        <textarea 
-                        id="notes"
-                        rows="6"
-                        formControlName="notes"
-                        class="form-control"></textarea>
+                        <textarea id="notes" rows="6" formControlName="notes" class="form-control"></textarea>
                     </div>
                 </div>
             </div>
@@ -50,11 +27,7 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="weather">Weather</label>
-                        <input
-                        type="text" 
-                        id="weather"
-                        formControlName="weather"
-                        class="form-control">
+                        <input type="text" id="weather" formControlName="weather" class="form-control">
                     </div>
                 </div>
             </div>
@@ -62,13 +35,8 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="crowdLevel">Crowd Level</label>
-                        <input
-                        type="number" 
-                        min="0"
-                        max="10"
-                        id="crowdLevel"
-                        formControlName="crowdLevel"
-                        class="form-control">
+                        <input type="number" min="0" max="10" id="crowdLevel" formControlName="crowdLevel"
+                            class="form-control">
                     </div>
                 </div>
             </div>
@@ -76,26 +44,53 @@
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="rating">Rating</label>
-                        <input
-                        type="number" 
-                        min="0"
-                        max="10"
-                        id="rating"
-                        formControlName="rating"
-                        class="form-control">
+                        <input type="number" min="0" max="10" id="rating" formControlName="rating" class="form-control">
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
-                    <p>Add Attractions Here</p>
+                <div class="col-xs-12" formArrayName="parks">
+                    <h4>Parks Visited</h4>
+                    <div *ngFor="let parkCtrl of parkControls; let i = index" [formGroupName]="i"
+                        style="border: 1px solid #ccc; padding: 10px; margin-top: 10px; border-radius: 4px;">
+
+                        <!-- Park Dropdown -->
+                        <div class="form-group">
+                            <label>Park</label>
+                            <select class="form-control" formControlName="park" (change)="onParkChange(i)">
+                                <option value="">-- Select a Park --</option>
+                                <option *ngFor="let p of availableParks" [value]="p">{{ p }}</option>
+                            </select>
+                        </div>
+
+                        <!-- Attractions for this park -->
+                        <div formArrayName="attractions">
+                            <label>Attractions</label>
+                            <div *ngFor="let attractionCtrl of getAttractionControls(i); let j = index"
+                                style="display: flex; gap: 8px; margin-bottom: 6px;">
+                                <select class="form-control" [formControlName]="j">
+                                    <option value="">-- Select an Attraction --</option>
+                                    <option *ngFor="let a of getFilteredAttractions(i)" [value]="a._id">{{ a.name }}
+                                    </option>
+                                </select>
+                                <button type="button" class="btn btn-danger"
+                                    (click)="onRemoveAttraction(i, j)">X</button>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm" (click)="onAddAttraction(i)">
+                                + Add Attraction
+                            </button>
+                        </div>
+
+                        <button type="button" class="btn btn-danger btn-sm" style="margin-top: 8px;"
+                            (click)="onRemovePark(i)">
+                            Remove Park
+                        </button>
+                    </div>
+
+                    <hr>
+                    <button type="button" class="btn btn-success" (click)="onAddPark()">+ Add Park</button>
                 </div>
-            </div>   
-            <div class="row">
-                <div class="col-xs-12">
-                    <p>Associate Trip Here</p>
-                </div>
-            </div>                      
+            </div>
         </form>
     </div>
 </div>
