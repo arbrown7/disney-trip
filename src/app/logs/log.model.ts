@@ -1,3 +1,6 @@
+import { Park } from "../shared/park.model";
+import { Attraction } from "../shared/attraction.model";
+
 export class Log {
     //id—the log id
     //date—date of the log entry
@@ -11,7 +14,7 @@ export class Log {
 
     public id: number;
     public date: string; 
-    public parks: string; // could be upgraded to be a array of objects later on
+    public parks: Park[]; // replaces parks + attractions
     public notes: string;
     public weather: string;
     public crowdLevel: number;
@@ -21,7 +24,7 @@ export class Log {
 
     constructor(
         date: string,
-        parks: string,
+        parks: Park[],
         notes: string,
         weather: string,
         crowd: number,
