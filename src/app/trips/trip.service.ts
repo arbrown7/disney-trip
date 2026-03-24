@@ -11,8 +11,7 @@ export class TripService {
 
   private trips: Trip[] = [];
 
-  constructor(//private logService: LogService
-    ) {}
+  constructor() {}
 
   setTrips(trips: Trip[]) {
       this.trips = trips;
@@ -26,10 +25,6 @@ export class TripService {
   getTrip(index: number) {
       return this.trips[index];
   }
-
-  // addIngredientsToShoppingList(ingredients: Ingredient[]) {
-  //     this.slService.addIngredients(ingredients);
-  // }
 
   addTrip(trip: Trip) {
       this.trips.push(trip);

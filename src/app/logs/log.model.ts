@@ -1,5 +1,14 @@
-import { Park } from "../shared/park.model";
-import { Attraction } from "../shared/attraction.model";
+import { Attraction } from "../attractions/attraction.model";
+
+export class Park {
+    public park: string;
+    public attractions: Attraction[];
+
+    constructor(park: string, attractions: Attraction[]) {
+        this.park = park;
+        this.attractions = attractions;
+    }
+}
 
 export class Log {
     //id—the log id
@@ -10,17 +19,15 @@ export class Log {
     //crowdLevel-level of crowds that day on a scale of 1-10
     //rating-rating enjoyment on a scale of 1-10
     //tripId-the tripId log is associated with
-    //children—a list of attraction objects associated with the trip
 
     public id: number;
     public date: string; 
-    public parks: Park[]; // replaces parks + attractions
+    public parks: Park[];
     public notes: string;
     public weather: string;
     public crowdLevel: number;
     public rating: number;
     public tripId: number;
-    public attractions?: any[]; // change to attraction[]
 
     constructor(
         date: string,
@@ -29,8 +36,7 @@ export class Log {
         weather: string,
         crowd: number,
         rating: number,
-        trip: number,
-        attractions: any[] // change to attraction[]
+        trip: number
     ) {
         this.date = date;
         this.parks = parks;
@@ -39,6 +45,5 @@ export class Log {
         this.crowdLevel = crowd;
         this.rating = rating;
         this.tripId = trip;
-        this.attractions = attractions;
     }
 }
